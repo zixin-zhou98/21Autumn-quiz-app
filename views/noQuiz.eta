@@ -1,0 +1,2 @@
+<% layout("./layouts/layout.eta") %>
+<p class="margin-top-large">There are no questions so far.</p>

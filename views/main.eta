@@ -1,0 +1,8 @@
+<% layout("./layouts/layout.eta") %>
+
+<h1>Question application</h1>
+
+<p>This is an application that allows users to add questions, options, and answer the questions. To use the application, the user need to register and log in. Any logged in user can view all the questions, and answer them. Logged in users can create and delete questions and options.</p>
+
+<p>Become a user: <a href="/auth/register">Register</a></p>
+<p>Explore the questions: <a href="/auth/login">Log in</a></p>

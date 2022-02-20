@@ -1,0 +1,6 @@
+<% layout("./layouts/layout.eta") %>
+<p class="margin-top-large">Incorrect!</p>
+
+<a href="/quiz" >Next question</a>
+
+<p>The correct option was <%=it.option.option_text%></p>

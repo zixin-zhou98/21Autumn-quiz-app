@@ -1,0 +1,51 @@
+<% layout("./layouts/layout.eta") %>
+<h3>Title: <%=it.question.title%></h2>
+
+<h3>Question content</h2>
+<p><%=it.question.question_text%></p>
+<h3>Options</h2>
+<% if (it.options && it.options.length > 0) { %>
+     <ul>
+        <%it.options.forEach((option)=>{%>
+            <li class="row">
+                <div class="padding-small">
+                    <%=option.option_text%> <%=option.is_correct%>
+                </div>
+                <form method="POST" action="/questions/<%=it.question.id%>/options/<%=option.id%>/delete" class="col-2 col padding-none">
+                    <input type="submit" value="Delete option"/> 
+                </form>
+            </li>
+        <%});%>
+     </ul>
+<%} else {%>
+    <form method="POST" action="/questions/<%=it.question.id%>/delete">
+        <input type="submit" value="Delete question"/>
+    </form>
+<%}%>
+<h3>Add an option:</h3>
+<form method="POST" action="/questions/<%=it.question.id%>/options" class="form-group">
+    <label for="option_text">Option</label>
+    <textarea name="option_text" id="option_text"></textarea>
+    <div class="row padding-small">
+        <label for="is_correct" class="align-bottom">Correct</label>
+        <% if (it.errors) { %>
+            <% if (it.option.is_correct) { %>
+                <input type="checkbox" name="is_correct" checked class="col-1 col align-middle"/>
+            <% } else { %>
+                <input type="checkbox" name="is_correct" class="col-1 col align-middle"/>
+            <% } %>
+        <% } else {%>
+            <input type="checkbox" name="is_correct" class="col-1 col align-middle"/>
+        <% } %>
+    </div>
+    <input type="submit" value="Add option"/>
+</form>
+<% if (it.errors) { %>
+<ul>
+    <% Object.keys(it.errors).forEach((attribute) => { %>
+        <% Object.values(it.errors[attribute]).forEach((err) => { %>
+            <li><%= err %></li>
+        <% }); %>
+    <% }); %>
+</ul>
+<% } %>

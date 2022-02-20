@@ -1,0 +1,14 @@
+<% layout("./layouts/layout.eta") %>
+<h1>Login</h1>
+<form method="POST" action="/auth/login" class="form-group">
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email"/>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password"/>
+    <input type="submit" value="Login" class="margin-top-small"/>
+</form>
+<% if (it.errors && it.errors.length>0){%>
+    <% it.errors.forEach((error)=>{%>
+        <%= error %>
+    <%});%>
+<%}%>

@@ -1,0 +1,16 @@
+<% layout("./layouts/layout.eta") %>
+<p class="margin-top-large">Number of answers: <%=it.numAnswer%> </p>
+<p>Number of correct answers: <%=it.numCorrectAnswer%> </p>
+<p>Number of answers given to questions created by you: <%=it.numAnswerToQuestions%> </p>
+<p>Five users with the most answered questions:</p>
+<ul> <%it.users.forEach((user)=>{%>
+    <li class="row">
+        <div class="col-3 col padding-none">
+            Email: <%=user.email%> 
+        </div>
+        <div class="col-3 col padding-none">
+            Number of answers: <%=user.count%>
+        </div>
+     </li>
+<%});%>
+</ul>
